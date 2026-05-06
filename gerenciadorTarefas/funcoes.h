@@ -6,5 +6,6 @@
 void mostrarMenu();
 void escolhaMenu(char *choice);
 Tarefas criarTarefa();
+void escolhaEstado();
 
 #endif
