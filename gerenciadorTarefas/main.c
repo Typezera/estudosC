@@ -2,16 +2,20 @@
 #include <string.h>
 //importe da struct tarefa + enum
 #include "structs/tarefas.h"
+#include "apresentacao.h"
 
 int main() {
+
     char buffer_name[30];
     char buffer_descricao[100];
 
     printf("Bem vindo ao Organizer.\n");
+    printf("Escolha uma das opções do menu\n");
+    mostrarMenu();
 
-    
     while(1){
 
+        
         printf("insira o nome da tarefa: ");
         fgets(buffer_name, sizeof(buffer_name), stdin);
         printf("\n");
