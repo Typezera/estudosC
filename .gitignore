@@ -1,1 +1,14 @@
 .vscode/
+
+# binários compilados
+main
+gerenciador
+
+
+*/main
+
+# arquivos objeto
+*.o
+
+# executáveis linux sem extensão
+*.out
