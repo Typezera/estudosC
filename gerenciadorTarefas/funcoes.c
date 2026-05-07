@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 
 void mostrarMenu(){
     printf("\n=======MENU=======\n");
@@ -23,27 +24,11 @@ void escolhaEstado(){
 //Lógica de criaçao de cada tarefa.
 Tarefas criarTarefa(){
     Tarefas t;
-    
-    char buffer_name[30];
-    char buffer_descricao[100];
-    char buffer_choice[6];
-    
-    printf("Nome da tarefa: ");
-    fgets(buffer_name, sizeof(buffer_name), stdin);
-    printf("\n");
-
-    printf("Descricao: ");
-    fgets(buffer_descricao, sizeof(buffer_descricao), stdin);
-    printf("\n");
-
-    strcpy(t.nome, buffer_name);
-    strcpy(t.descricao, buffer_descricao);
-
-    escolhaEstado();
-    fgets(buffer_choice, sizeof(buffer_choice), stdin);
-    int val = strtol(buffer_choice, NULL, 10);
-    
-    t.estado = val;
+    validacaoTarefa(&t);
+    printf("tarefa montada com sucesso informações\n");
+    printf("Nome: %s\n", t.nome);
+    printf("Descrição: %s\n", t.descricao);
+    printf("Status: %s\n", estadoParaString(t.estado));
 
     return t;
 }
@@ -55,12 +40,66 @@ void escolhaMenu(char *choice){
     {
     case '1':
         Tarefas task = criarTarefa();
-        printf("nome: %s\n", task.nome);
-        printf("descrição: %s\n", task.descricao);
-        printf("Status: %d\n", task.estado);
         break;
     
     default:
         break;
     }
+}
+
+void validacaoTarefa(Tarefas *addres){
+
+    char buffer_name[30];
+    char buffer_descricao[100];
+    char buffer_choice[6];
+
+    printf("Nome da tarefa: ");
+    if(fgets(buffer_name, sizeof(buffer_name), stdin) == NULL){
+        printf("Erro na entrada dos dados de nome.");
+    };
+    printf("\n");
+    while (buffer_name[0] == '\n')
+    {
+        printf("[ERROR] Valor inserido em nome é invalido\n");
+        printf("Informe um valor valido ");
+        fgets(buffer_name, sizeof(buffer_name), stdin);
+        printf("\n");
+    }
+
+    printf("Descricao: ");
+    if(fgets(buffer_descricao, sizeof(buffer_descricao), stdin) == NULL){
+        printf("Erro na entrada dos dados de descrição.");
+    };
+    printf("\n");
+    while (buffer_descricao[0] == '\n')
+    {
+        printf("[ERROR] Valor inserido na descrição é invalido\n");
+        printf("Informe um valor valido ");
+        fgets(buffer_descricao, sizeof(buffer_descricao), stdin);
+        printf("\n");
+    }
+
+    strcpy(addres->nome, buffer_name);
+    strcpy(addres->descricao, buffer_descricao);
+    
+    escolhaEstado();
+    if(fgets(buffer_choice, sizeof(buffer_choice), stdin) == NULL){
+        printf("Erro na entrada dos dados de Escoha");
+    };
+    int val = strtol(buffer_choice, NULL, 10);
+    while (val >= 3)
+    {
+        printf("[ERROR] Valor inserido na escolha é invalido\n");
+        printf("Informe um valor valido ");       
+        fgets(buffer_choice, sizeof(buffer_choice), stdin);
+        int val = strtol(buffer_choice, NULL, 10);
+    }
+    addres->estado = val;
+}
+
+char* estadoParaString(Status estado){
+    if (estado == 0){return "CONCLUIDO";}
+    if (estado == 1){return "URGENTE";}
+    if (estado == 2){return "PENDENTE";}
+    if (estado > 2){return "DESCONHECIDO";}
 }
