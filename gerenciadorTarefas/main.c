@@ -8,8 +8,10 @@
 
 int main() {
     char buffer_choice[5];
-    char buffer_quanTarefas[3];
+    char buffer_quanTarefas[10];
     int tot;
+    int totalTarefas = 0;
+    Tarefas *task;
     
     printf("Bem vindo ao Organizer.\n");
     do
@@ -20,19 +22,10 @@ int main() {
             printf("[ERROR] Ao passar a quantidade.");
         };
         tot = strtol(buffer_quanTarefas, NULL, 10);
-    } while (buffer_quanTarefas[0] == '\n');
-    printf("%d", tot);
-    
-    // if(fgets(buffer_quanTarefas, sizeof(buffer_quanTarefas), stdin) == NULL){
-    //     printf("[ERROR] Ao passar a quantidade.");
-    // };
-    // while (buffer_quanTarefas[0] == "\n")
-    // {
-    //     if(fgets(buffer_quanTarefas, sizeof(buffer_quanTarefas), stdin) == NULL){
-    //         printf("[ERROR] Ao passar a quantidade.");
-    //     };
-    // }
+    } while (tot < 0 || tot == 0 );
 
+    task = malloc(tot * sizeof (Tarefas));
+    
     printf("Escolha uma das opções do menu\n");
     mostrarMenu();
     printf("\n");
@@ -40,7 +33,15 @@ int main() {
 
     while(1){
         fgets(buffer_choice, sizeof(buffer_choice), stdin);
-        escolhaMenu(buffer_choice);
+        escolhaMenu(buffer_choice, &totalTarefas, task);
+        printf("Escolha uma nova ação: \n");
+
+        for (int i = 0; i < totalTarefas; i++)
+        {
+            printf("%s",task[i].nome);
+            printf("%s",task[i].descricao);
+            printf("%s",estadoParaString(task[i].estado));
+        }
         
     }
 

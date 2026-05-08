@@ -34,11 +34,12 @@ Tarefas criarTarefa(){
 
 
 //parte do comportamento do sistema
-void escolhaMenu(char *choice){
+void escolhaMenu(char *choice, int *total, Tarefas *task){
     switch (*choice)
     {
     case '1':
-        Tarefas task = criarTarefa();
+        task[*total] = criarTarefa();
+        (*total)++;
         break;
     
     default:
