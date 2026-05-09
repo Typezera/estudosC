@@ -11,7 +11,7 @@ int main() {
     char buffer_choice[5];
     char buffer_quanTarefas[10];
     int tot;
-    int totalTarefas = 0;
+    int tarefasRegistradas = 0;
     Tarefas *task;
     
     printf("Bem vindo ao Organizer.\n");
@@ -33,15 +33,8 @@ int main() {
     while(1){
         mostrarMenu();
         fgets(buffer_choice, sizeof(buffer_choice), stdin);
-        escolhaMenu(buffer_choice, &totalTarefas, task, &tot);
+        escolhaMenu(buffer_choice, &tarefasRegistradas, task, &tot);
         printf("Escolha uma nova ação: \n");
-
-        // for (int i = 0; i < totalTarefas; i++)
-        // {
-        //     printf("%s",task[i].nome);
-        //     printf("%s",task[i].descricao);
-        //     printf("%s",estadoParaString(task[i].estado));
-        // }
         
     }
 

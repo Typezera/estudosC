@@ -4,7 +4,7 @@
 #define CADASTRO_H
 
 void mostrarMenu();
-void escolhaMenu(char *choice, int *total, Tarefas *task, int *quant);
+void escolhaMenu(char *choice, int *totalRegistrado, Tarefas *task, int *quant);
 Tarefas criarTarefa();
 
 void validacaoTarefa(Tarefas *addres);

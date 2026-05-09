@@ -4,7 +4,7 @@
 #ifndef VISUALIZAR_H
 #define VISUALIZAR_H
 
-void exibirTarefas(Tarefas *tarefa);
+void exibirTarefas(Tarefas *works, int *totTarefas, int *quant);
 void escolhaEstado();
 void mostrarMenu();
 

@@ -18,17 +18,20 @@ Tarefas criarTarefa(){
 
 
 //parte do comportamento do sistema
-void escolhaMenu(char *choice, int *total, Tarefas *task, int *quant){
+void escolhaMenu(char *choice, int *totalRegistrado, Tarefas *task, int *quant){
     switch (*choice)
     {
     case '1':
-        if (*total < *quant)
+        if (*totalRegistrado < *quant)
         {
-            task[*total] = criarTarefa();
-            (*total)++;
+            task[*totalRegistrado] = criarTarefa();
+            (*totalRegistrado)++;
             break;
         }
         printf("Valor máximo de tarefas já atingido. \n");
+        break;
+    case '2':
+        exibirTarefas(task, totalRegistrado, quant);
         break;
     default:
         break;
