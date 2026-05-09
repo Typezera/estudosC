@@ -3,7 +3,8 @@
 #include <stdlib.h>
 //importe da struct tarefa + enum
 #include "structs/tarefas.h"
-#include "funcoes.h"
+#include "cadastro.h"
+#include "visualizar.h"
 
 
 int main() {
@@ -26,13 +27,11 @@ int main() {
 
     task = malloc(tot * sizeof (Tarefas));
     
-
     printf("Escolha uma das opções do menu\n");
-    mostrarMenu();
     printf("\n");
 
-
     while(1){
+        mostrarMenu();
         fgets(buffer_choice, sizeof(buffer_choice), stdin);
         escolhaMenu(buffer_choice, &totalTarefas, task, &tot);
         printf("Escolha uma nova ação: \n");

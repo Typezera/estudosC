@@ -1,24 +1,9 @@
-#include "funcoes.h"
+#include "cadastro.h"
 #include "structs/tarefas.h"
+#include "visualizar.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-void mostrarMenu(){
-    printf("\n=======MENU=======\n");
-    printf(" [1] Cadastra tarefa\n");
-    printf(" [2] Visualizar tarefas\n");
-    printf(" [3] Remover tarefa\n");
-    printf(" [4] Editar tarefa\n");
-    printf("Escolha: ");
-}
-void escolhaEstado(){
-    printf("Estado da tarefa.\n");
-    printf("[0]Concluida ");
-    printf("[1]Urgente ");
-    printf("[2]Pendente \n");
-}
-
 
 //Lógica de criaçao de cada tarefa.
 Tarefas criarTarefa(){
