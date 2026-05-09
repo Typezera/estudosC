@@ -5,6 +5,7 @@
 #define VISUALIZAR_H
 
 void exibirTarefas(Tarefas *works, int *totTarefas, int *quant);
+void complementoExibicao(int *totTarefas, int *quant);
 void escolhaEstado();
 void mostrarMenu();
 

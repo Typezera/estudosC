@@ -8,6 +8,7 @@ void escolhaEstado(){
     printf("[0]Concluida ");
     printf("[1]Urgente ");
     printf("[2]Pendente \n");
+    printf("\n");
 }
 
 void mostrarMenu(){
@@ -16,19 +17,25 @@ void mostrarMenu(){
     printf(" [2] Visualizar tarefas\n");
     printf(" [3] Remover tarefa\n");
     printf(" [4] Editar tarefa\n");
+    printf("\n");
     printf("Escolha: ");
 }
 
 void exibirTarefas(Tarefas *works, int *totTarefas, int *quant){
     printf("Tarefas cadastradas até o momento: \n");
+    printf("\n");
     for (int i = 0; i < *totTarefas; i++)
     {
-        printf("%s", works[i].nome);
-        printf("%s", works[i].descricao);
-        printf("%s \n", estadoParaString(works[i].estado));
+        printf("ID: %d\n", i);
+        printf("NOME: %s", works[i].nome);
+        printf("DESCRICAO: %s", works[i].descricao);
+        printf("STATUS: %s \n", estadoParaString(works[i].estado));
+        printf("\n");
     }
+    printf("\n");
+}
 
-    //refatorar depois, criando uma função para conseguir aumentar o tamanho do vetor dinâmico
+void complementoExibicao(int *totTarefas, int *quant){
     int quantRegistro = *quant - *totTarefas;
     if (quantRegistro == 0)
     {
@@ -36,6 +43,5 @@ void exibirTarefas(Tarefas *works, int *totTarefas, int *quant){
         return;
     }
     
-    printf("Ainda é possivel cadastrar: %d", *quant - *totTarefas);
-    printf("\n");
+    printf("Ainda é possivel cadastrar: %d\n", *quant - *totTarefas);
 }

@@ -1,6 +1,7 @@
 #include "cadastro.h"
 #include "structs/tarefas.h"
 #include "visualizar.h"
+#include "removerTarefa.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,7 +10,6 @@
 Tarefas criarTarefa(){
     Tarefas t;
     validacaoTarefa(&t);
-    printf("tarefa montada com sucesso informações\n");
     // printf("Nome: %s\n", t.nome);
     // printf("Descrição: %s\n", t.descricao);
     // printf("Status: %s\n", estadoParaString(t.estado));
@@ -32,6 +32,10 @@ void escolhaMenu(char *choice, int *totalRegistrado, Tarefas *task, int *quant){
         break;
     case '2':
         exibirTarefas(task, totalRegistrado, quant);
+        complementoExibicao(totalRegistrado, quant);
+        break;
+    case '3':
+        deletarTarefa(task,totalRegistrado, quant);
         break;
     default:
         break;
