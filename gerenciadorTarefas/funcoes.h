@@ -4,7 +4,7 @@
 #define FUNCOES_H
 
 void mostrarMenu();
-void escolhaMenu(char *choice, int *total, Tarefas *task);
+void escolhaMenu(char *choice, int *total, Tarefas *task, int *quant);
 Tarefas criarTarefa();
 void escolhaEstado();
 void validacaoTarefa(Tarefas *addres);

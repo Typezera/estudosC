@@ -34,14 +34,17 @@ Tarefas criarTarefa(){
 
 
 //parte do comportamento do sistema
-void escolhaMenu(char *choice, int *total, Tarefas *task){
+void escolhaMenu(char *choice, int *total, Tarefas *task, int *quant){
     switch (*choice)
     {
     case '1':
-        task[*total] = criarTarefa();
-        (*total)++;
+        if (*total < *quant)
+        {
+            task[*total] = criarTarefa();
+            (*total)++;
+        }
+        printf("Valor máximo de tarefas já atingido. \n");
         break;
-    
     default:
         break;
     }
@@ -70,7 +73,8 @@ void validacaoTarefa(Tarefas *addres){
             printf("Erro na entrada dos dados de descrição");
         }
 
-        
+        printf("\n");
+
     } while (buffer_descricao[0] == '\n');
     
     printf("\n");
@@ -85,6 +89,7 @@ void validacaoTarefa(Tarefas *addres){
             printf("Erro na entrada dos dados de Escoha");
         };
         val = strtol(buffer_choice, NULL, 10);
+        printf("\n");
     } while (val >= 3);
 
     addres->estado = val;

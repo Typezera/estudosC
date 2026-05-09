@@ -26,6 +26,7 @@ int main() {
 
     task = malloc(tot * sizeof (Tarefas));
     
+
     printf("Escolha uma das opções do menu\n");
     mostrarMenu();
     printf("\n");
@@ -33,7 +34,7 @@ int main() {
 
     while(1){
         fgets(buffer_choice, sizeof(buffer_choice), stdin);
-        escolhaMenu(buffer_choice, &totalTarefas, task);
+        escolhaMenu(buffer_choice, &totalTarefas, task, &tot);
         printf("Escolha uma nova ação: \n");
 
         for (int i = 0; i < totalTarefas; i++)
