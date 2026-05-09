@@ -1,7 +1,7 @@
 #include "cadastro.h"
 #include "structs/tarefas.h"
 #include "visualizar.h"
-#include "removerTarefa.h"
+#include "edit_delete.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -36,6 +36,9 @@ void escolhaMenu(char *choice, int *totalRegistrado, Tarefas *task, int *quant){
         break;
     case '3':
         deletarTarefa(task,totalRegistrado, quant);
+        break;
+    case '4':
+        editarTarefa(task, totalRegistrado, quant);
         break;
     default:
         break;
