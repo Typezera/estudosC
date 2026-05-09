@@ -48,7 +48,7 @@ void escolhaMenu(char *choice, int *total, Tarefas *task){
 }
 
 void validacaoTarefa(Tarefas *addres){
-
+    
     char buffer_name[30];
     char buffer_descricao[100];
     char buffer_choice[6];
@@ -58,27 +58,29 @@ void validacaoTarefa(Tarefas *addres){
         printf("Erro na entrada dos dados de nome.");
     };
     printf("\n");
-    while (buffer_name[0] == '\n')
-    {
-        printf("[ERROR] Valor inserido em nome é invalido\n");
-        printf("Informe um valor valido ");
-        fgets(buffer_name, sizeof(buffer_name), stdin);
-        printf("\n");
-    }
 
-    printf("Descricao: ");
-    if(fgets(buffer_descricao, sizeof(buffer_descricao), stdin) == NULL){
-        printf("Erro na entrada dos dados de descrição.");
-    };
+    do
+    {
+        printf("Informe um nome: ");
+        if(fgets(buffer_name, sizeof(buffer_name), stdin) == NULL){
+            printf("Valor inválido");
+        };
+        printf("\n");
+    } while (buffer_name[0] == '\n');
+
+    do
+    {
+        
+        printf("Descricao: ");
+        if(fgets(buffer_descricao, sizeof(buffer_descricao), stdin) == NULL){
+            printf("Erro na entrada dos dados de descrição");
+        }
+
+        
+    } while (buffer_descricao[0] == '\n');
+    
     printf("\n");
-    while (buffer_descricao[0] == '\n')
-    {
-        printf("[ERROR] Valor inserido na descrição é invalido\n");
-        printf("Informe um valor valido ");
-        fgets(buffer_descricao, sizeof(buffer_descricao), stdin);
-        printf("\n");
-    }
-
+    
     strcpy(addres->nome, buffer_name);
     strcpy(addres->descricao, buffer_descricao);
     
