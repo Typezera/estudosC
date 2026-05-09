@@ -37,15 +37,14 @@ int main() {
         escolhaMenu(buffer_choice, &totalTarefas, task, &tot);
         printf("Escolha uma nova ação: \n");
 
-        for (int i = 0; i < totalTarefas; i++)
-        {
-            printf("%s",task[i].nome);
-            printf("%s",task[i].descricao);
-            printf("%s",estadoParaString(task[i].estado));
-        }
+        // for (int i = 0; i < totalTarefas; i++)
+        // {
+        //     printf("%s",task[i].nome);
+        //     printf("%s",task[i].descricao);
+        //     printf("%s",estadoParaString(task[i].estado));
+        // }
         
     }
-
 
     return 0;
 }

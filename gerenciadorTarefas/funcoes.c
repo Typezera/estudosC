@@ -13,7 +13,7 @@ void mostrarMenu(){
     printf("Escolha: ");
 }
 void escolhaEstado(){
-    printf("Estado da tarefa: ");
+    printf("Estado da tarefa.\n");
     printf("[0]Concluida ");
     printf("[1]Urgente ");
     printf("[2]Pendente \n");
@@ -25,10 +25,9 @@ Tarefas criarTarefa(){
     Tarefas t;
     validacaoTarefa(&t);
     printf("tarefa montada com sucesso informações\n");
-    printf("Nome: %s\n", t.nome);
-    printf("Descrição: %s\n", t.descricao);
-    printf("Status: %s\n", estadoParaString(t.estado));
-
+    // printf("Nome: %s\n", t.nome);
+    // printf("Descrição: %s\n", t.descricao);
+    // printf("Status: %s\n", estadoParaString(t.estado));
     return t;
 }
 
@@ -42,6 +41,7 @@ void escolhaMenu(char *choice, int *total, Tarefas *task, int *quant){
         {
             task[*total] = criarTarefa();
             (*total)++;
+            break;
         }
         printf("Valor máximo de tarefas já atingido. \n");
         break;
@@ -55,7 +55,7 @@ void validacaoTarefa(Tarefas *addres){
     char buffer_name[30];
     char buffer_descricao[100];
     char buffer_choice[6];
-
+    printf("\n");
     do
     {
         printf("Informe um nome: ");
