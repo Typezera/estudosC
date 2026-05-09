@@ -48,16 +48,10 @@ void escolhaMenu(char *choice, int *total, Tarefas *task){
 }
 
 void validacaoTarefa(Tarefas *addres){
-    
+    int val;
     char buffer_name[30];
     char buffer_descricao[100];
     char buffer_choice[6];
-
-    printf("Nome da tarefa: ");
-    if(fgets(buffer_name, sizeof(buffer_name), stdin) == NULL){
-        printf("Erro na entrada dos dados de nome.");
-    };
-    printf("\n");
 
     do
     {
@@ -80,22 +74,19 @@ void validacaoTarefa(Tarefas *addres){
     } while (buffer_descricao[0] == '\n');
     
     printf("\n");
-    
+
     strcpy(addres->nome, buffer_name);
     strcpy(addres->descricao, buffer_descricao);
-    
-    escolhaEstado();
-    if(fgets(buffer_choice, sizeof(buffer_choice), stdin) == NULL){
-        printf("Erro na entrada dos dados de Escoha");
-    };
-    int val = strtol(buffer_choice, NULL, 10);
-    while (val >= 3)
+
+    do
     {
-        printf("[ERROR] Valor inserido na escolha é invalido\n");
-        printf("Informe um valor valido ");       
-        fgets(buffer_choice, sizeof(buffer_choice), stdin);
-        int val = strtol(buffer_choice, NULL, 10);
-    }
+        escolhaEstado();
+        if(fgets(buffer_choice, sizeof(buffer_choice), stdin) == NULL){
+            printf("Erro na entrada dos dados de Escoha");
+        };
+        val = strtol(buffer_choice, NULL, 10);
+    } while (val >= 3);
+
     addres->estado = val;
 }
 
